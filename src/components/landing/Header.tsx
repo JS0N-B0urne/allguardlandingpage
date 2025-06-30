@@ -1,7 +1,32 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Header = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 23,
+    minutes: 45,
+    seconds: 30
+  });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) {
+          return { ...prev, seconds: prev.seconds - 1 };
+        } else if (prev.minutes > 0) {
+          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        } else if (prev.hours > 0) {
+          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        } else {
+          // Reset timer when it reaches 0
+          return { hours: 23, minutes: 59, seconds: 59 };
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const handleQuoteRequest = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -12,6 +37,13 @@ const Header = () => {
   return (
     <header className="bg-gradient-to-b from-red-500 to-red-600 text-white px-4 py-8 text-center">
       <div className="max-w-md mx-auto">
+        {/* Limited Time Badge */}
+        <div className="mb-4">
+          <span className="bg-yellow-400 text-red-800 text-xs font-bold px-3 py-1 rounded-full animate-pulse">
+            🔥 LIMITED TIME OFFER
+          </span>
+        </div>
+
         {/* Logo */}
         <div className="mb-6">
           <img 
@@ -26,10 +58,35 @@ const Header = () => {
           Melbourne Pest Control
         </h1>
         
-        {/* Subheadline */}
-        <h2 className="text-xl mb-6 text-red-100">
+        {/* Subheadline with Urgency */}
+        <h2 className="text-xl mb-4 text-red-100">
           Get 20% Off Your Service Today
         </h2>
+
+        {/* Countdown Timer */}
+        <div className="bg-white text-red-600 rounded-lg p-4 mb-6 shadow-lg">
+          <div className="text-sm font-semibold mb-2">Offer Expires In:</div>
+          <div className="flex justify-center space-x-4 text-2xl font-bold">
+            <div className="text-center">
+              <div className="bg-red-600 text-white px-2 py-1 rounded">
+                {String(timeLeft.hours).padStart(2, '0')}
+              </div>
+              <div className="text-xs mt-1">Hours</div>
+            </div>
+            <div className="text-center">
+              <div className="bg-red-600 text-white px-2 py-1 rounded">
+                {String(timeLeft.minutes).padStart(2, '0')}
+              </div>
+              <div className="text-xs mt-1">Mins</div>
+            </div>
+            <div className="text-center">
+              <div className="bg-red-600 text-white px-2 py-1 rounded">
+                {String(timeLeft.seconds).padStart(2, '0')}
+              </div>
+              <div className="text-xs mt-1">Secs</div>
+            </div>
+          </div>
+        </div>
         
         {/* Phone Number */}
         <div className="mb-6">
@@ -39,16 +96,21 @@ const Header = () => {
           >
             📞 0403 616 327
           </a>
-          <p className="text-sm text-red-100">Call Now for Immediate Service</p>
+          <p className="text-sm text-red-100">Call Now - Only 3 Spots Left Today!</p>
         </div>
         
-        {/* CTA Button */}
+        {/* CTA Button with Urgency */}
         <button 
           onClick={handleQuoteRequest}
-          className="bg-white text-red-600 font-bold py-4 px-8 rounded-lg text-lg w-full max-w-xs hover:bg-red-50 transition-colors duration-200 shadow-lg"
+          className="bg-yellow-400 text-red-800 font-bold py-4 px-8 rounded-lg text-lg w-full max-w-xs hover:bg-yellow-300 transition-colors duration-200 shadow-lg animate-pulse"
         >
-          Request Free Quote
+          Claim 20% OFF Now!
         </button>
+        
+        {/* Urgency Text */}
+        <p className="text-xs text-red-100 mt-3">
+          ⚡ Don't Wait - This Offer Won't Last!
+        </p>
       </div>
     </header>
   );

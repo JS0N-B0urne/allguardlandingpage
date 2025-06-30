@@ -49,10 +49,37 @@ const Contact = () => {
     <section id="contact" className="bg-red-500 text-white py-8 px-4">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold mb-4">Get Your Free Quote Today!</h3>
-          <p className="text-red-100 mb-6">
-            Don't let pests take over your home. Contact us now for immediate assistance.
+          {/* Urgency Badge */}
+          <div className="mb-4">
+            <span className="bg-yellow-400 text-red-800 text-sm font-bold px-4 py-2 rounded-full">
+              🚨 ACT FAST - LIMITED SLOTS AVAILABLE
+            </span>
+          </div>
+
+          <h3 className="text-2xl font-bold mb-4">Secure Your 20% Discount Now!</h3>
+          <p className="text-red-100 mb-4">
+            Don't let pests take over your home. Only a few appointments left today!
           </p>
+          
+          {/* Scarcity Indicator */}
+          <div className="bg-red-600 rounded-lg p-3 mb-6">
+            <div className="text-sm font-semibold mb-2">Today's Availability:</div>
+            <div className="flex justify-center items-center space-x-2">
+              <div className="flex space-x-1">
+                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
+                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
+                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
+                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
+                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-white rounded-full opacity-30"></div>
+                <div className="w-3 h-3 bg-white rounded-full opacity-30"></div>
+              </div>
+            </div>
+            <p className="text-xs text-red-100 mt-2">Only 3 spots remaining today!</p>
+          </div>
           
           {/* Phone Number */}
           <div className="mb-6">
@@ -138,11 +165,11 @@ const Contact = () => {
             disabled={!isFormValid || isSubmitting}
             className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-200 ${
               isFormValid && !isSubmitting
-                ? 'bg-white text-red-600 hover:bg-red-50 shadow-lg'
+                ? 'bg-yellow-400 text-red-800 hover:bg-yellow-300 shadow-lg animate-pulse'
                 : 'bg-red-300 text-red-100 cursor-not-allowed'
             }`}
           >
-            {isSubmitting ? 'Sending...' : 'Request Free Quote'}
+            {isSubmitting ? 'Securing Your Discount...' : 'Lock In 20% OFF Now!'}
           </button>
         </form>
 
@@ -150,16 +177,19 @@ const Contact = () => {
         {showSuccess && (
           <div className="mt-4 p-4 bg-green-600 text-white rounded-lg">
             <p className="text-center font-semibold">
-              ✅ Thank you! We'll contact you within 30 minutes.
+              ✅ Congratulations! Your 20% discount is secured. We'll contact you within 30 minutes.
             </p>
           </div>
         )}
 
-        {/* Additional Info */}
+        {/* Additional Urgency Info */}
         <div className="text-center mt-8 space-y-2 text-red-100 text-sm">
-          <p>📧 Available for live chat support</p>
-          <p>⏰ Same-day service available</p>
+          <p>⚡ Same-day emergency service available</p>
+          <p>🔒 Price locked in for 48 hours</p>
           <p>🛡️ Fully licensed and insured</p>
+          <p className="font-semibold text-yellow-300">
+            ⏰ This 20% offer expires at midnight tonight!
+          </p>
         </div>
       </div>
     </section>
