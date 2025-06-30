@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +11,25 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -46,46 +65,48 @@ const Contact = () => {
   const isFormValid = formData.name && formData.phone && formData.service;
 
   return (
-    <section id="contact" className="bg-red-500 text-white py-8 px-4">
+    <section ref={sectionRef} id="contact" className="bg-red-500 text-white py-8 px-4 overflow-hidden">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-8">
-          {/* Urgency Badge */}
-          <div className="mb-4">
-            <span className="bg-yellow-400 text-red-800 text-sm font-bold px-4 py-2 rounded-full">
-              🚨 ACT FAST - LIMITED SLOTS AVAILABLE
+          {/* More Subtle Badge */}
+          <div className={`mb-4 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
+            <span className="bg-yellow-400 text-red-800 text-sm font-semibold px-4 py-2 rounded-full shadow-md">
+              📋 Get Your Quote Today
             </span>
           </div>
 
-          <h3 className="text-2xl font-bold mb-4">Secure Your 20% Discount Now!</h3>
-          <p className="text-red-100 mb-4">
-            Don't let pests take over your home. Only a few appointments left today!
+          <h3 className={`text-2xl font-bold mb-4 transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
+            Ready to Protect Your Home?
+          </h3>
+          <p className={`text-red-100 mb-4 transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
+            Professional pest control services with today's special pricing
           </p>
           
-          {/* Scarcity Indicator */}
-          <div className="bg-red-600 rounded-lg p-3 mb-6">
-            <div className="text-sm font-semibold mb-2">Today's Availability:</div>
+          {/* More Elegant Availability Indicator */}
+          <div className={`bg-red-600/50 backdrop-blur-sm rounded-lg p-4 mb-6 border border-white/20 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
+            <div className="text-sm font-medium mb-2">Today's Availability:</div>
             <div className="flex justify-center items-center space-x-2">
               <div className="flex space-x-1">
-                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
-                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
-                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
-                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
-                <div className="w-3 h-3 bg-red-800 rounded-full"></div>
-                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
-                <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-red-700 rounded-full opacity-60"></div>
+                <div className="w-3 h-3 bg-red-700 rounded-full opacity-60"></div>
+                <div className="w-3 h-3 bg-red-700 rounded-full opacity-60"></div>
+                <div className="w-3 h-3 bg-red-700 rounded-full opacity-60"></div>
+                <div className="w-3 h-3 bg-red-700 rounded-full opacity-60"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full shadow-sm"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full shadow-sm"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full shadow-sm"></div>
                 <div className="w-3 h-3 bg-white rounded-full opacity-30"></div>
                 <div className="w-3 h-3 bg-white rounded-full opacity-30"></div>
               </div>
             </div>
-            <p className="text-xs text-red-100 mt-2">Only 3 spots remaining today!</p>
+            <p className="text-xs text-red-100 mt-2">Several appointments still available</p>
           </div>
           
           {/* Phone Number */}
-          <div className="mb-6">
+          <div className={`mb-6 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
             <a 
               href="tel:0403616327" 
-              className="text-2xl font-bold text-white hover:text-red-100 transition-colors duration-200 block mb-2"
+              className="text-2xl font-bold text-white hover:text-red-100 transition-all duration-300 block mb-2 hover:scale-105"
             >
               📞 0403 616 327
             </a>
@@ -93,9 +114,9 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Contact Form */}
+        {/* Contact Form with Staggered Animation */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+          <div className={`transform transition-all duration-700 delay-600 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}>
             <input
               type="text"
               name="name"
@@ -103,11 +124,11 @@ const Contact = () => {
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="w-full p-3 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+              className="w-full p-3 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 focus:scale-105"
             />
           </div>
           
-          <div>
+          <div className={`transform transition-all duration-700 delay-700 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}>
             <input
               type="tel"
               name="phone"
@@ -115,28 +136,28 @@ const Contact = () => {
               value={formData.phone}
               onChange={handleInputChange}
               required
-              className="w-full p-3 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+              className="w-full p-3 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 focus:scale-105"
             />
           </div>
           
-          <div>
+          <div className={`transform transition-all duration-700 delay-800 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}>
             <input
               type="email"
               name="email"
               placeholder="Your Email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full p-3 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+              className="w-full p-3 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 focus:scale-105"
             />
           </div>
           
-          <div>
+          <div className={`transform transition-all duration-700 delay-900 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}>
             <select
               name="service"
               value={formData.service}
               onChange={handleInputChange}
               required
-              className="w-full p-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+              className="w-full p-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 focus:scale-105"
             >
               <option value="">Select Service Type *</option>
               <option value="general">General Pest Control</option>
@@ -149,46 +170,46 @@ const Contact = () => {
             </select>
           </div>
           
-          <div>
+          <div className={`transform transition-all duration-700 delay-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}>
             <textarea
               name="message"
               placeholder="Tell us about your pest problem..."
               value={formData.message}
               onChange={handleInputChange}
               rows={4}
-              className="w-full p-3 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white resize-none"
+              className="w-full p-3 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white resize-none transition-all duration-300 focus:scale-105"
             />
           </div>
           
           <button
             type="submit"
             disabled={!isFormValid || isSubmitting}
-            className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-200 ${
+            className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-300 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'} delay-1100 ${
               isFormValid && !isSubmitting
-                ? 'bg-yellow-400 text-red-800 hover:bg-yellow-300 shadow-lg animate-pulse'
+                ? 'bg-yellow-400 text-red-800 hover:bg-yellow-300 hover:scale-105 shadow-lg'
                 : 'bg-red-300 text-red-100 cursor-not-allowed'
             }`}
           >
-            {isSubmitting ? 'Securing Your Discount...' : 'Lock In 20% OFF Now!'}
+            {isSubmitting ? 'Processing Your Request...' : 'Get Your Free Quote'}
           </button>
         </form>
 
         {/* Success Message */}
         {showSuccess && (
-          <div className="mt-4 p-4 bg-green-600 text-white rounded-lg">
+          <div className="mt-4 p-4 bg-green-600 text-white rounded-lg animate-fade-in">
             <p className="text-center font-semibold">
-              ✅ Congratulations! Your 20% discount is secured. We'll contact you within 30 minutes.
+              ✅ Thank you! We'll contact you shortly with your personalized quote.
             </p>
           </div>
         )}
 
-        {/* Additional Urgency Info */}
-        <div className="text-center mt-8 space-y-2 text-red-100 text-sm">
-          <p>⚡ Same-day emergency service available</p>
-          <p>🔒 Price locked in for 48 hours</p>
+        {/* Service Benefits - More Professional */}
+        <div className={`text-center mt-8 space-y-2 text-red-100 text-sm transform transition-all duration-1000 delay-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
+          <p>⚡ Same-day service available</p>
+          <p>🔒 All quotes valid for 48 hours</p>
           <p>🛡️ Fully licensed and insured</p>
-          <p className="font-semibold text-yellow-300">
-            ⏰ This 20% offer expires at midnight tonight!
+          <p className="font-medium text-yellow-300 mt-4">
+            💰 Special pricing available until midnight
           </p>
         </div>
       </div>
