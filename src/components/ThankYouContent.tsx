@@ -58,11 +58,11 @@ const ThankYouContent = () => {
         </div>
 
         {/* Contact Information */}
-        <div className={`mb-6 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+        <div className={`mb-6 text-center transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
           <p className="text-red-100 mb-2">Need to speak with us immediately?</p>
           <button
             onClick={handleCallNow}
-            className="text-2xl font-bold text-white hover:text-red-100 transition-all duration-300 block mb-2 hover:scale-105 cursor-pointer"
+            className="text-2xl font-bold text-white hover:text-red-100 transition-all duration-300 mx-auto block mb-2 hover:scale-105 cursor-pointer"
           >
             📞 0403 616 327
           </button>
