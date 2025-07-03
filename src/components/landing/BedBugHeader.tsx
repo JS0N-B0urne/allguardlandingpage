@@ -36,7 +36,7 @@ const BedBugHeader = () => {
         {/* Special Offer Badge - More Subtle */}
         <div className={`mb-4 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
           <span className="bg-yellow-400 text-red-800 text-xs font-semibold px-4 py-2 rounded-full shadow-md">
-            {australianDay} Emergency Service Available
+            {australianDay} Service Available
           </span>
         </div>
 
