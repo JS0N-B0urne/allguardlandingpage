@@ -1,8 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/YOUR_CPANEL_USERNAME/public_html/
-    - export REPOPATH=/home/YOUR_CPANEL_USERNAME/repositories/YOUR_REPO_NAME
+    - export DEPLOYPATH=/home/pestne01/public_html/offer/
+    - export REPOPATH=/home/pestne01/repositories/allguardlandingpage
     - /bin/cp -R $REPOPATH/dist/* $DEPLOYPATH
     - /bin/chmod 644 $DEPLOYPATH/*
     - /bin/find $DEPLOYPATH -type d -exec chmod 755 {} \; 

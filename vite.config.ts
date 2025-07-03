@@ -4,30 +4,36 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [
-    react(),
-    mode === 'development' &&
-    componentTagger(),
-  ].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+export default defineConfig(({ mode, command }) => {
+  // Get the landing page type from environment variable
+  const landingPage = process.env.LANDING_PAGE || 'main';
+  
+  return {
+    server: {
+      host: "::",
+      port: 8080,
     },
-  },
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    sourcemap: mode === 'development',
-    minify: mode === 'production',
-    rollupOptions: {
-      output: {
-        manualChunks: undefined,
+    plugins: [
+      react(),
+      mode === 'development' &&
+      componentTagger(),
+    ].filter(Boolean),
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
       },
     },
-  },
-}));
+    build: {
+      outDir: `dist/${landingPage}`,
+      assetsDir: 'assets',
+      sourcemap: mode === 'development',
+      minify: mode === 'production',
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
+    },
+    base: landingPage === 'main' ? '/' : `/${landingPage}/`,
+  };
+});
