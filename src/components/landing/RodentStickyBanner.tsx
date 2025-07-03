@@ -24,7 +24,7 @@ const RodentStickyBanner = () => {
     <div className={`fixed top-0 left-0 right-0 z-50 bg-yellow-400 text-red-800 px-4 py-3 text-center shadow-lg transform transition-all duration-500 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="max-w-md mx-auto">
         <p className="text-sm font-semibold">
-          🐀 Rodents multiply fast! Don't let them take over - call us for immediate control!
+          🐀 Rodents multiply fast! Don't let them take over - call us for fast control!
         </p>
       </div>
     </div>

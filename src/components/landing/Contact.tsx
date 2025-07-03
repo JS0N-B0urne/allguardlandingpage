@@ -54,8 +54,6 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        setIsSubmitting(false);
-        setShowSuccess(true);
         setFormData({
           name: '',
           phone: ''
@@ -142,7 +140,9 @@ const Contact = () => {
             type="submit"
             disabled={!isFormValid || isSubmitting}
             className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-300 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'} delay-1100 ${
-              isFormValid && !isSubmitting
+              isSubmitting
+                ? 'bg-green-600 text-white cursor-not-allowed'
+                : isFormValid
                 ? 'bg-yellow-400 text-red-800 hover:bg-yellow-300 hover:scale-105 shadow-lg'
                 : 'bg-red-300 text-red-100 cursor-not-allowed'
             }`}
@@ -151,14 +151,7 @@ const Contact = () => {
           </button>
         </form>
 
-        {/* Success Message */}
-        {showSuccess && (
-          <div className="mt-4 p-4 bg-green-600 text-white rounded-lg animate-fade-in">
-            <p className="text-center font-semibold">
-              ✅ Submitting Request... Please Wait
-            </p>
-          </div>
-        )}
+
 
         {/* Error Message */}
         {showError && (

@@ -54,9 +54,9 @@ const RodentHeader = () => {
           Melbourne Rodent Control
         </h1>
         
-        {/* Subheadline - Less Aggressive */}
-        <h2 className={`text-xl mb-4 text-red-100 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-          Professional Rat & Mouse Extermination Services
+        {/* Subheadline - More Prominent */}
+        <h2 className={`text-2xl font-bold mb-4 text-yellow-300 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          Get 20% Off Your Service Today
         </h2>
 
         {/* Introductory Text */}

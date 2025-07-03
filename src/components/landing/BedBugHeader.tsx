@@ -36,7 +36,7 @@ const BedBugHeader = () => {
         {/* Special Offer Badge - More Subtle */}
         <div className={`mb-4 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
           <span className="bg-yellow-400 text-red-800 text-xs font-semibold px-4 py-2 rounded-full shadow-md">
-            {australianDay} Service Available
+            {australianDay} Special Available
           </span>
         </div>
 
@@ -54,9 +54,9 @@ const BedBugHeader = () => {
           Melbourne Bed Bug Control
         </h1>
         
-        {/* Subheadline - Less Aggressive */}
-        <h2 className={`text-xl mb-4 text-red-100 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-          Professional Bed Bug Treatment & Eradication
+        {/* Subheadline - More Prominent */}
+        <h2 className={`text-2xl font-bold mb-4 text-yellow-300 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          Get 20% Off Your Service Today
         </h2>
 
         {/* Introductory Text */}
