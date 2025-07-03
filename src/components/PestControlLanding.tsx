@@ -1,10 +1,10 @@
-
 import React, { useEffect } from 'react';
 import Header from './landing/Header';
 import TrustIndicators from './landing/TrustIndicators';
 import AboutUs from './landing/AboutUs';
 import Reviews from './landing/Reviews';
 import Contact from './landing/Contact';
+import StickyBanner from './landing/StickyBanner';
 
 const PestControlLanding = () => {
   useEffect(() => {
@@ -47,10 +47,11 @@ const PestControlLanding = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <StickyBanner />
       <Header />
       <TrustIndicators />
-      <AboutUs />
       <Reviews />
+      <AboutUs />
       <Contact />
     </div>
   );
