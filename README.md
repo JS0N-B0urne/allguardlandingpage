@@ -50,6 +50,14 @@ npm run dev
 - Click on "New codespace" to launch a new Codespace environment.
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
+## Available Pages
+
+This project includes multiple landing pages:
+
+- **Home Page** (`/`) - General pest control services
+- **Bed Bug Control** (`/bed-bug-control`) - Specialized bed bug treatment and eradication services
+- **Rodent Control** (`/rodent-control`) - Professional rat and mouse extermination services
+
 ## What technologies are used for this project?
 
 This project is built with:

@@ -63,7 +63,7 @@ const Contact = () => {
         
         // Redirect to thank you page after 2 seconds
         setTimeout(() => {
-          window.location.href = '/thank-you';
+          window.location.href = window.location.origin + '/thank-you';
         }, 2000);
       } else {
         throw new Error('Failed to submit form');
@@ -103,7 +103,7 @@ const Contact = () => {
             >
               📞 0403 616 327
             </a>
-            <p className="text-sm text-red-100">Call now or fill out the form below</p>
+            <p className="text-sm text-red-100">Call or fill out the form below, or use the live chat to speak to a pest controller.</p>
           </div>
         </div>
 
