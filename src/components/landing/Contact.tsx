@@ -172,7 +172,6 @@ const Contact = () => {
         {/* Service Benefits - More Professional */}
         <div className={`text-center mt-8 space-y-2 text-red-100 text-sm transform transition-all duration-1000 delay-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
           <p>⚡ Same-day service available</p>
-          <p>🔒 All quotes valid for 48 hours</p>
           <p>🛡️ Fully licensed and insured</p>
         </div>
       </div>
