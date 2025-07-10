@@ -30,6 +30,13 @@ const BedBugHeader = () => {
     }
   };
 
+  const handleReviewsScroll = () => {
+    const reviewsSection = document.getElementById('reviews');
+    if (reviewsSection) {
+      reviewsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="bg-gradient-to-b from-red-500 to-red-600 text-white px-4 py-8 text-center overflow-hidden">
       <div className="max-w-md mx-auto">
@@ -63,9 +70,9 @@ const BedBugHeader = () => {
         <div className={`mb-6 transform transition-all duration-1000 delay-450 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
           <p className="text-base text-white bg-red-600/40 rounded-lg px-4 py-3 shadow-sm leading-relaxed">
             Bed bugs keeping you up at night?<br /><br />
-            We understand the stress and discomfort bed bugs cause. Our expert team has been successfully treating bed bug infestations across Melbourne for years.<br /><br />
-            Using proven methods and safe treatments, we'll eliminate bed bugs from your home completely.<br /><br />
-            Don't let bed bugs take over your life. Get professional help today.
+            You're not alone. We've helped hundreds of Melbourne residents eliminate bed bugs quickly and safely. <span className="text-yellow-300 font-semibold cursor-pointer hover:text-yellow-200 transition-colors duration-300" onClick={handleReviewsScroll}>You can read many of their reviews below!</span><br /><br />
+            Bites and sleepless nights... we've seen (and solved) it all.<br /><br />
+            Let us help you next. Book now and save 20% with our limited-time offer.
           </p>
         </div>
 
@@ -84,7 +91,7 @@ const BedBugHeader = () => {
           onClick={handleQuoteRequest}
           className={`bg-yellow-400 text-red-800 font-bold py-4 px-8 rounded-lg text-lg w-full max-w-xs hover:bg-yellow-300 hover:scale-105 transition-all duration-300 shadow-lg transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'} delay-700`}
         >
-          Get Free Bed Bug Quote
+          Get 20% Off Now
         </button>
       </div>
     </header>

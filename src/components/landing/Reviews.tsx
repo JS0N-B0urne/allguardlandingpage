@@ -12,7 +12,7 @@ const Reviews = () => {
   }, []);
 
   return (
-    <section className="py-8 px-4">
+    <section id="reviews" className="py-8 px-4">
       <div className="max-w-md mx-auto text-center">
         {/* Elfsight All-in-One Reviews | All Guard */}
         <div className="elfsight-app-640d81b0-2ecb-4abc-aef5-df60503a4550" data-elfsight-app-lazy></div>

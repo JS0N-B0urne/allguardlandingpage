@@ -30,6 +30,13 @@ const RodentHeader = () => {
     }
   };
 
+  const handleReviewsScroll = () => {
+    const reviewsSection = document.getElementById('reviews');
+    if (reviewsSection) {
+      reviewsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="bg-gradient-to-b from-red-500 to-red-600 text-white px-4 py-8 text-center overflow-hidden">
       <div className="max-w-md mx-auto">
@@ -63,9 +70,9 @@ const RodentHeader = () => {
         <div className={`mb-6 transform transition-all duration-1000 delay-450 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
           <p className="text-base text-white bg-red-600/40 rounded-lg px-4 py-3 shadow-sm leading-relaxed">
             Rats or mice in your home or business?<br /><br />
-            We understand how distressing and unsanitary rodent infestations can be. Our expert team has been successfully eliminating rats and mice from Melbourne properties for years.<br /><br />
-            Using proven methods and effective treatments, we'll rid your property of rodents completely.<br /><br />
-                         Don't let rodents damage your property. Get professional help today.
+            You're not alone. We've helped countless Melbourne residents eliminate rodent infestations quickly & effectively. <span className="text-yellow-300 font-semibold cursor-pointer hover:text-yellow-200 transition-colors duration-300" onClick={handleReviewsScroll}>You can read many of their reviews below!</span><br /><br />
+            From scratching in the walls to chewed wires and droppings, we've seen (and solved) it all.<br /><br />
+            Let us help you next. Book now and save 20% with our limited-time offer.
           </p>
         </div>
 
@@ -84,7 +91,7 @@ const RodentHeader = () => {
           onClick={handleQuoteRequest}
           className={`bg-yellow-400 text-red-800 font-bold py-4 px-8 rounded-lg text-lg w-full max-w-xs hover:bg-yellow-300 hover:scale-105 transition-all duration-300 shadow-lg transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'} delay-700`}
         >
-          Get Free Rodent Quote
+          Get 20% Off Now
         </button>
       </div>
     </header>

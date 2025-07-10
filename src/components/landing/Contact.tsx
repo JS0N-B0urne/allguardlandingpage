@@ -81,7 +81,7 @@ const Contact = () => {
           {/* More Subtle Badge */}
           <div className={`mb-4 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
             <span className="bg-yellow-400 text-red-800 text-sm font-semibold px-4 py-2 rounded-full shadow-md">
-              📋 Get Your Quote Today
+              💰 Get 20% Off Today
             </span>
           </div>
 
@@ -147,7 +147,7 @@ const Contact = () => {
                 : 'bg-red-300 text-red-100 cursor-not-allowed'
             }`}
           >
-            {isSubmitting ? 'Processing Your Request...' : 'Get Your Free Quote'}
+            {isSubmitting ? 'Processing Your Request...' : 'Get 20% Off Now'}
           </button>
         </form>
 
